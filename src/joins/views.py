@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 
 from .forms import EmailForm, JoinForm
 from .models import Join
@@ -27,6 +27,11 @@ def get_ref_id():
     except:
         return ref_id
 
+def share(request, ref_id):
+    context = {}
+    template = "share.html"
+    return render(request, template, context)
+
 def home(request):
     # print request.POST['email']
 
@@ -51,6 +56,7 @@ def home(request):
             new_join_old.ip_address = get_ip(request)
             new_join_old.save()
         #redirect here
+        return HttpResponseRedirect("%s" %(new_join_old.ref_id))
 
         # when finished processing, now save with new_join.save()
         # new_join.ip_address = get_ip(request)
