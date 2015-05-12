@@ -28,20 +28,19 @@ def get_ref_id():
         return ref_id
 
 def share(request, ref_id):
-    context = {}
+    context = {"ref_id": ref_id}
     template = "share.html"
     return render(request, template, context)
 
 def home(request):
-    # print request.POST['email']
+    try:
+        join_id = request.session['join_id_ref']
+        obj = Join.objects.get(id = join_id)
+        print "the id is %s" + %(obj.email)
+    except:
+        join_id = None
 
-    # Using regular django forms
-    # form = EmailForm(request.POST or None)
-    # if form.is_valid():
-    #     email = form.cleaned_data['email']
-    #     new_join, created = Join.objects.get_or_create(email=email)
-    #     if created:
-    #         print "This object was created"
+
 
     # Using model forms
     form = JoinForm(request.POST or None)
