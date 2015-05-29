@@ -31,6 +31,7 @@ def get_ref_id():
 
 
 def share(request, ref_id):
+    # print ref_id
     context = {"ref_id": ref_id}
     template = "share.html"
     return render(request, template, context)
@@ -40,7 +41,7 @@ def home(request):
     try:
         join_id = request.session['join_id_ref']
         obj = Join.objects.get(id=join_id)
-        print ("the id is %s" % (obj.email))
+        print ("the id is %s" % (join_id))
     except:
         obj = None
 

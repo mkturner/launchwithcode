@@ -18,8 +18,9 @@ class ReferMiddleware():
 
         try:
             obj = Join.objects.get(ref_id=ref_id)
+            print obj
         except:
             obj = None
 
         if obj:
-            request.session['ref'] = obj.id
+            request.session['join_id_ref'] = obj.id
