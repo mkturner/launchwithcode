@@ -8,7 +8,7 @@ class JoinAdmin(admin.ModelAdmin):
     '''
         Admin View for Join
     '''
-    list_display = ['email', 'ref_id', 'timestamp', 'updated']
+    list_display = ['email', 'ref_id', 'friend', 'timestamp', 'updated']
 
     class meta:
         model = Join
