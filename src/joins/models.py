@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Join(models.Model):
     email = models.EmailField()
-    friend = models.ForeignKey('self', related_name="Referral",
+    friend = models.ForeignKey('self', related_name="referral",
                                null=True, blank=True)
     ref_id = models.CharField(max_length=120, default="empty", unique=True)
     ip_address = models.CharField(max_length=120, default='0.0.0.0')
