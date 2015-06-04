@@ -71,7 +71,7 @@ def home(request):
 
         # print all 'friends' that came from main sharer
         print Join.objects.filter(friend=obj)
-        print obj.Referral.all()
+        print obj.referral.all()
 
         #redirect here
         return HttpResponseRedirect("/%s" % (new_join_old.ref_id))
